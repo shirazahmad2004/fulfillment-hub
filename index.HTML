@@ -1,0 +1,113 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Fulfillment Hub</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3f1ec;--card:#fffefb;--ink:#1d2320;--mut:#66706b;--line:#dcd8cf;--acc:#0f5c4d;--accbg:#dff0ea;--red:#b3261e;--redbg:#fbe3e0;--amb:#8a5300;--ambbg:#fdeccb;--grn:#1b6e3a;--grnbg:#dff3e4}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#151a18;--card:#1e2522;--ink:#ecefed;--mut:#9aa6a0;--line:#2f3935;--acc:#5fd0b4;--accbg:#173a32;--red:#ff8a80;--redbg:#40201d;--amb:#ffc266;--ambbg:#3d2d0f;--grn:#79d99b;--grnbg:#163a24}}
+:root[data-theme=dark]{--bg:#151a18;--card:#1e2522;--ink:#ecefed;--mut:#9aa6a0;--line:#2f3935;--acc:#5fd0b4;--accbg:#173a32;--red:#ff8a80;--redbg:#40201d;--amb:#ffc266;--ambbg:#3d2d0f;--grn:#79d99b;--grnbg:#163a24}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--card)}
+h1{font-size:19px;margin:0;font-family:Georgia,"Times New Roman",serif;letter-spacing:.2px}h2{font-size:17px;margin:0 0 8px}h3{font-size:14px;margin:0}
+nav{display:flex;gap:4px;flex-wrap:wrap}nav button{border:0;background:none;padding:9px 14px;border-radius:8px;font:inherit;color:var(--mut);cursor:pointer}nav button.on{background:var(--accbg);color:var(--acc);font-weight:600}
+nav i{font-style:normal;background:var(--red);color:#fff;border-radius:9px;padding:0 6px;font-size:12px;margin-left:5px}
+main{padding:18px 20px;max-width:1280px;margin:auto}
+button{font:inherit;cursor:pointer}.btn{background:var(--acc);color:var(--card);border:0;padding:9px 14px;border-radius:8px;font-weight:600}.btn:disabled{opacity:.4;cursor:not-allowed}.btn.big{padding:14px 20px;font-size:16px;width:100%}
+.ghost{background:none;border:1px solid var(--line);color:var(--ink);padding:8px 12px;border-radius:8px}.warn{background:var(--redbg);color:var(--red);border:0;padding:8px 12px;border-radius:8px;font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.kpi b{font-size:26px;display:block;font-family:Georgia,serif}.kpi.bad b{color:var(--red)}.kpi span{color:var(--mut);font-size:13px}
+.chips{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}.chips button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:6px 13px}.chips .on{background:var(--ink);color:var(--card)}
+.cols{display:grid;grid-template-columns:repeat(5,minmax(190px,1fr));gap:10px;overflow-x:auto;padding-bottom:6px}
+.col{background:color-mix(in srgb,var(--line) 35%,transparent);border-radius:10px;padding:8px;min-height:120px}.col h3{padding:4px 6px 8px;display:flex;justify-content:space-between}.col h3 span{color:var(--mut);font-weight:400}
+.oc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;padding:9px 10px;margin-bottom:7px;cursor:pointer}.oc.p{border-left-color:var(--acc)}.oc.bad{border-left-color:var(--red)}.oc small{color:var(--mut)}
+.b{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:10px;margin:3px 4px 0 0}.b.red{background:var(--redbg);color:var(--red)}.b.amb{background:var(--ambbg);color:var(--amb)}.b.grn{background:var(--grnbg);color:var(--grn)}.b.acc{background:var(--accbg);color:var(--acc)}.b.gr{background:var(--line);color:var(--mut)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
+.row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--line)}.row:first-of-type{border-top:0}
+.item{display:grid;grid-template-columns:1fr auto;gap:6px 14px;padding:12px 0;border-top:1px solid var(--line);align-items:center}.item:first-of-type{border-top:0}
+.bin{font:700 22px Consolas,monospace;background:var(--accbg);color:var(--acc);padding:4px 12px;border-radius:8px}.code{font:13px Consolas,monospace;color:var(--mut)}
+input,select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);max-width:100%}
+.grid2{display:grid;grid-template-columns:2fr 1fr;gap:14px}@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.note{color:var(--mut);font-size:13px}.alert{background:var(--redbg);color:var(--red);padding:10px 12px;border-radius:8px;margin:8px 0;font-weight:600}.okbox{background:var(--grnbg);color:var(--grn);padding:10px 12px;border-radius:8px;margin:8px 0;font-weight:600}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--card);padding:11px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;z-index:9}#toast.show{opacity:1}
+</style></head><body>
+<header><div><h1>Fulfillment Hub</h1><span class="note">XYZ Store · one screen per job</span></div><nav id="nav"></nav>
+<div style="display:flex;gap:6px"><button class="ghost" onclick="ff()" title="Demo: move the clock forward so delays show up">⏩ +30 min</button><button class="ghost" onclick="location.reload()">Reset demo</button></div></header>
+<main id="v"></main><div id="toast"></div>
+<script>
+const M=6e4,T0=Date.now(),S={skew:0,tab:'board',sel:null,f:'all',cur:null,scan:{},issues:[]};
+const now=()=>Date.now()+S.skew;
+const C={FX:{n:'FastEx',cost:120,spd:'1 day',d:1,pick:T0+90*M},QS:{n:'QuickShip',cost:75,spd:'2 days',d:2,pick:T0+210*M},PI:{n:'PostIndia',cost:45,spd:'4 days',d:4,pick:T0+390*M}};
+const P={};[['TSH-BLK-M','Cotton Tee · Black · M','A-01',24,40],['TSH-BLK-L','Cotton Tee · Black · L','A-02',3,50],['TSH-WHT-M','Cotton Tee · White · M','A-03',18,0],['HOD-GRY-M','Hoodie · Grey · M','B-01',9,20],['HOD-GRY-L','Hoodie · Grey · L','B-02',0,15],['MUG-BLU','Ceramic Mug · Blue','C-04',40,100],['MUG-RED','Ceramic Mug · Red','C-05',12,0],['BTL-STL','Steel Bottle 750ml','D-02',22,30],['CAP-NVY','Cap · Navy','D-07',15,0],['BAG-TOT','Canvas Tote','E-01',30,20]].forEach(([s,n,b,m,w])=>P[s]={s,n,b,main:m,wh2:w});
+const SK=Object.keys(P);let seed=7;const rnd=n=>(seed=(seed*16807)%2147483647)%n;
+const AGE={new:[5,50],labelled:[10,60],picking:[5,50],staged:[10,90],shipped:[100,300]};
+const O=[];('new,'.repeat(6)+'labelled,'.repeat(6)+'picking,'.repeat(3)+'staged,'.repeat(7)+'shipped,'.repeat(5)).split(',').filter(Boolean).forEach((st,i)=>{
+ const pri=i%4==1&&st!=='shipped',n=1+rnd(3),items=[],a=AGE[st],age=a[0]+rnd(a[1]-a[0]);
+ for(let k=0;k<n;k++){const s=SK[rnd(SK.length)];if(!items.find(x=>x[0]==s)&&!['HOD-GRY-L','TSH-BLK-L'].includes(s))items.push([s,1+rnd(2)])}
+ if(!items.length)items.push(['MUG-BLU',1]);
+ O.push(mk(1001+i,['Amazon','Flipkart','Own site'][rnd(3)],pri,items,st==='new'?null:(pri?'FX':(rnd(2)?'QS':'PI')),st,age))});
+function mk(n,ch,pri,items,cr,st,age){return{id:'ORD-'+n,ch,pri,items,cr,st,since:T0-age*M,blocked:false,log:[[T0-(age+20)*M,'Order received from '+ch]]}}
+O.push(mk(1043,'Amazon',true,[['HOD-GRY-L',1],['MUG-BLU',1]],'FX','labelled',12),mk(1044,'Flipkart',false,[['TSH-BLK-L',5]],'QS','picking',20));
+S.issues=[{id:1,o:'ORD-1010',t:'Box not found at staging',note:'Checked lane B twice',open:true,at:T0-40*M},{id:2,o:'ORD-1003',t:'Wrong variant reported',note:'Customer got Black L, ordered M',open:true,at:T0-95*M},{id:3,o:'ORD-1018',t:'Stock missing',note:'Found on wrong shelf',open:false,at:T0-200*M}];
+const by=id=>O.find(o=>o.id==id),cut=o=>C[o.cr||(o.pri?'FX':'PI')].pick,mn=x=>Math.round(x/M),clk=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+const LIM={new:30,labelled:45,picking:40},STG={new:'New',labelled:'Label ready',picking:'Picking & packing',staged:'Waiting for courier',shipped:'Shipped'};
+const lg=(o,t)=>o.log.push([now(),t]),bd=(c,t)=>`<span class="b ${c}">${t}</span>`;
+function flags(o){const f=[];if(o.st==='shipped')return f;const l=cut(o)-now();
+ if(o.st!=='staged'){if(l<0)f.push(['red','Missed cutoff']);else if(o.pri&&l<45*M)f.push(['red','Due in '+mn(l)+'m']);if(now()-o.since>LIM[o.st]*M)f.push(['amb','Stuck '+mn(now()-o.since)+'m'])}
+ else if(l<0)f.push(['red','Pickup missed']);if(o.blocked)f.push(['red','Blocked']);return f}
+const need=o=>o.items.filter(([s,q])=>P[s].main<q),att=o=>flags(o).length>0,open=()=>O.filter(o=>o.st!=='shipped');
+const srt=(a,b)=>(b.pri-a.pri)||(cut(a)-cut(b));
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.className='show';clearTimeout(toast.t);toast.t=setTimeout(()=>e.className='',2600)}
+function addIssue(o,t,note){S.issues.unshift({id:Date.now(),o,t,note,open:true,at:now()})}
+function rec(o){const l=Object.entries(C).filter(([k,c])=>c.pick-now()>30*M);if(!l.length)return'PI';return(o.pri?l.sort((a,b)=>a[1].d-b[1].d):l.sort((a,b)=>a[1].cost-b[1].cost))[0][0]}
+function ff(){S.skew+=30*M;toast('Clock moved +30 min. Check which orders turned red.');render()}
+/* actions */
+function label(id,el){const o=by(id),cr=document.getElementById('cr-'+id).value;o.cr=cr;o.st='labelled';o.since=now();lg(o,'Label created · '+C[cr].n);toast(id+' label ready → Warehouse queue');render()}
+function labelAll(){O.filter(o=>o.st==='new').forEach(o=>{o.cr=rec(o);o.st='labelled';o.since=now();lg(o,'Label created · '+C[o.cr].n)});toast('All new orders labelled with recommended courier');render()}
+function scan(e,id,sku){if(e.key!=='Enter')return;const o=by(id),v=e.target.value.trim().toUpperCase();if(!v)return;
+ if(v===sku){S.scan[id+sku]=1;if(o.st==='labelled'){o.st='picking';o.since=now();lg(o,'Picking started')}toast('✓ Correct item')}
+ else{const w=P[v]?P[v].n:'an unknown code';addIssue(id,'Wrong item scanned (caught before packing)','Scanned '+w+' instead of '+P[sku].n);lg(o,'Wrong item scan blocked');toast('✗ Wrong item: that is '+w+'. Put it back.')}render()}
+function move(sku){const p=P[sku],q=Math.min(p.wh2,10);p.wh2-=q;p.main+=q;toast(q+' units moved Warehouse 2 → Main for '+p.n);render()}
+function cant(id,sku){const o=by(id),p=P[sku];const was=p.main;o.blocked=true;p.main=0;addIssue(id,'Stock missing',p.n+' not at '+p.b+' (system said '+was+')');lg(o,'Blocked: '+p.n+' not found');S.cur=null;toast('Reported. Order set aside — next order is up.');render()}
+function pack(id){const o=by(id);o.st='staged';o.since=now();o.items.forEach(([s,q])=>P[s].main-=q);lg(o,'Packed & label attached');S.cur=null;toast(id+' packed → put in '+C[o.cr].n+' lane');render()}
+function collect(cr){O.filter(o=>o.cr==cr&&o.st==='staged').forEach(o=>{o.st='shipped';o.since=now();lg(o,'Collected by '+C[cr].n)});toast(C[cr].n+' pickup confirmed');render()}
+function late(cr){const n=Object.keys(C).filter(k=>k!=cr&&C[k].pick>now()).sort((a,b)=>C[a].pick-C[b].pick)[0];if(!n)return toast('No later pickup today');
+ const l=O.filter(o=>o.cr==cr&&o.st==='staged');l.forEach(o=>{o.cr=n;lg(o,'Courier missed pickup → moved to '+C[n].n)});addIssue(l.map(o=>o.id).join(', '),'Courier missed pickup',l.length+' boxes moved to '+C[n].n);toast('Moved to '+C[n].n);render()}
+function resolve(id){const i=S.issues.find(x=>x.id==id);i.open=false;const o=by(i.o);if(o&&o.blocked){o.blocked=false;need(o).forEach(([s,q])=>P[s].main=q);lg(o,'Issue resolved — back in queue')}toast('Issue closed');render()}
+function report(){const o=document.getElementById('io').value.trim(),t=document.getElementById('it').value,n=document.getElementById('in').value;if(!o)return toast('Enter an order ID');addIssue(o,t,n||'—');toast('Issue logged');render()}
+/* views */
+const card=o=>{const f=flags(o);return `<div class="oc ${o.pri?'p':''} ${f.some(x=>x[0]=='red')?'bad':''}" onclick="S.sel='${o.id}';render()"><b>${o.id}</b> <small>${o.ch}</small><br>${o.pri?bd('acc','Priority'):''}${o.cr?bd('gr',C[o.cr].n):''}${f.map(x=>bd(x[0],x[1])).join('')}<br><small>${o.items.length} item${o.items.length>1?'s':''} · ${mn(now()-o.since)}m in stage</small></div>`};
+function board(){const op=open(),pr=op.filter(o=>o.pri),risk=pr.filter(att).length,st=op.filter(o=>flags(o).some(x=>x[1].startsWith('Stuck'))).length,mp=O.filter(o=>o.st=='staged'&&cut(o)<now()).length,is=S.issues.filter(i=>i.open).length;
+ let L=O.filter(o=>S.f=='all'||(S.f=='pri'&&o.pri)||(S.f=='att'&&att(o)));
+ const k=(n,l,b)=>`<div class="kpi ${b&&n?'bad':''}"><b>${n}</b><span>${l}</span></div>`;
+ let d='';if(S.sel){const o=by(S.sel);d=`<div class="panel"><div class="row" style="border:0"><h2>${o.id} · ${o.ch} ${o.pri?bd('acc','Priority'):''}</h2><button class="ghost" onclick="S.sel=null;render()">Close</button></div>${o.items.map(([s,q])=>`<div>${q} × ${P[s].n} <span class="code">${s}</span></div>`).join('')}<p class="note">Due for ${C[o.cr||(o.pri?'FX':'PI')].n} pickup at ${clk(cut(o))} · Now: ${STG[o.st]}</p>${o.log.slice().reverse().map(l=>`<div class="note">${clk(l[0])} — ${l[1]}</div>`).join('')}</div>`}
+ return `<div class="kpis">${k(op.length,'Open orders')}${k(risk,'Priority orders at risk',1)}${k(st,'Stuck in a stage',1)}${k(mp,'Missed pickups',1)}${k(is,'Open issues',1)}</div>${d}
+ <div class="chips">${[['all','All orders'],['pri','Priority only'],['att','Needs attention']].map(([a,b])=>`<button class="${S.f==a?'on':''}" onclick="S.f='${a}';render()">${b}</button>`).join('')}</div>
+ <div class="cols">${Object.keys(STG).map(s=>{const l=L.filter(o=>o.st==s).sort(srt);return `<div class="col"><h3>${STG[s]}<span>${l.length}</span></h3>${(s=='shipped'?l.slice(0,3):l).map(card).join('')||'<p class="note" style="padding:6px">Nothing here</p>'}</div>`}).join('')}</div>`}
+function office(){const l=O.filter(o=>o.st==='new').sort(srt);
+ return `<div class="row" style="border:0"><div><h2>Orders waiting for a label (${l.length})</h2><span class="note">Priority orders first. Courier is pre-selected: fastest for priority, cheapest for the rest. Change it if needed.</span></div>${l.length?`<button class="btn" onclick="labelAll()">Label all with recommended</button>`:''}</div>
+ ${l.length?l.map(o=>{const r=rec(o);return `<div class="panel"><div class="row" style="border:0;padding:0"><div><b>${o.id}</b> <small class="note">${o.ch}</small> ${o.pri?bd('acc','Priority · ship today'):''}<br><span class="note">${o.items.map(([s,q])=>q+'× '+P[s].n).join(' · ')}</span>${flags(o).map(x=>bd(x[0],x[1])).join('')}</div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><select id="cr-${o.id}">${Object.entries(C).map(([k,c])=>`<option value="${k}" ${k==r?'selected':''} ${c.pick<now()?'disabled':''}>${c.n} · ₹${c.cost} · ${c.spd} · pickup ${clk(c.pick)}</option>`).join('')}</select><button class="btn" onclick="label('${o.id}')">Create label</button></div></div></div>`}).join(''):'<div class="okbox">Inbox zero. Every order has a label.</div>'}`}
+function wh(){const q=O.filter(o=>(o.st=='labelled'||o.st=='picking')&&!o.blocked).sort(srt),bl=O.filter(o=>o.blocked&&o.st!='shipped');
+ const o=q.find(x=>x.id==S.cur)||q[0];if(!o)return `<div class="okbox">Nothing to pick right now. 🎉</div>${bl.length?`<p class="note">${bl.length} order(s) set aside for missing stock — see Issues.</p>`:''}`;
+ const nm=need(o),f=flags(o),ok=o.items.every(([s])=>S.scan[o.id+s]);
+ return `<div class="grid2"><div class="panel"><div class="row" style="border:0;padding:0"><h2>${o.id} ${o.pri?bd('acc','PRIORITY'):''}</h2><div>${bd('gr',C[o.cr].n+' pickup '+clk(C[o.cr].pick))}${f.map(x=>bd(x[0],x[1])).join('')}</div></div>
+ ${o.items.map(([s,q])=>{const p=P[s],low=p.main<q,done=S.scan[o.id+s];return `<div class="item"><div><div style="font-size:18px;font-weight:600">${q} × ${p.n}</div><span class="code">Code ${s} · Main ${p.main} · Warehouse 2 ${p.wh2}</span>
+ ${low&&!done?(p.wh2>=q-p.main?`<div class="alert">Only ${p.main} in main. <button class="warn" onclick="move('${s}')">Move 10 from Warehouse 2 first</button></div>`:`<div class="alert">Not enough stock anywhere.</div>`):''}</div><div class="bin">${p.b}</div>
+ <div>${done?bd('grn','✓ Verified'):`<input placeholder="Scan or type code" ${low?'disabled':''} onkeydown="scan(event,'${o.id}','${s}')">`}</div><div style="text-align:right">${done?'':`<button class="ghost" onclick="cant('${o.id}','${s}')">Can't find it</button>`}</div></div>`}).join('')}
+ <p class="note">Scan each item. A wrong product or variant is stopped here, before it gets boxed. (Demo: type the code shown under the item name, then press Enter.)</p>
+ <button class="btn big" ${ok&&!nm.length||ok?'':'disabled'} onclick="pack('${o.id}')">Packed · label attached · put in ${C[o.cr].n} lane</button></div>
+ <div><div class="panel"><h3>Up next (${q.length-1})</h3>${q.filter(x=>x!=o).map(x=>`<div class="row" style="cursor:pointer" onclick="S.cur='${x.id}';render()"><span>${x.id} ${x.pri?bd('acc','P'):''}</span><span class="note">by ${clk(cut(x))}</span></div>`).join('')||'<p class="note">Last one</p>'}</div>
+ ${bl.length?`<div class="panel"><h3>Set aside (${bl.length})</h3>${bl.map(x=>`<div class="row"><span>${x.id}</span>${bd('red','Missing stock')}</div>`).join('')}</div>`:''}</div></div>`}
+function disp(){return `<div class="cg">${Object.entries(C).map(([k,c])=>{const st=O.filter(o=>o.cr==k&&o.st=='staged'),nr=O.filter(o=>o.cr==k&&(o.st=='labelled'||o.st=='picking')),l=c.pick-now(),miss=l<0&&st.length;
+ return `<div class="panel"><div class="row" style="border:0;padding:0"><h2>${c.n}</h2>${l<0?bd('red','Pickup was '+clk(c.pick)):bd(l<30*M?'amb':'gr','Pickup '+clk(c.pick)+' · in '+mn(l)+'m')}</div>
+ <p class="note" style="margin:4px 0">₹${c.cost} · ${c.spd}</p>${miss?`<div class="alert">Courier missed pickup. ${st.length} box(es) still here.</div><button class="warn" onclick="late('${k}')">Move to next courier</button>`:''}
+ <h3 style="margin-top:10px">Ready at the door (${st.length})</h3>${st.map(o=>`<div class="row">${o.id} ${o.pri?bd('acc','Priority'):''}</div>`).join('')||'<p class="note">None</p>'}
+ ${nr.length?`<h3 style="margin-top:10px">Not packed yet (${nr.length})</h3>${nr.map(o=>`<div class="row"><span>${o.id} ${flags(o).map(x=>bd(x[0],x[1])).join('')}</span></div>`).join('')}`:''}
+ ${st.length&&l>=0?`<button class="btn big" style="margin-top:10px" onclick="collect('${k}')">Courier collected ${st.length} box(es)</button>`:''}</div>`}).join('')}</div>`}
+function iss(){const op=S.issues.filter(i=>i.open),cl=S.issues.filter(i=>!i.open),row=i=>`<div class="row"><div><b>${i.t}</b> ${bd('gr',i.o)}<br><span class="note">${i.note} · ${clk(i.at)}</span></div>${i.open?`<button class="btn" onclick="resolve(${i.id})">Mark resolved</button>`:bd('grn','Resolved')}</div>`;
+ return `<div class="grid2"><div class="panel"><h2>Open (${op.length})</h2>${op.map(row).join('')||'<div class="okbox">No open issues.</div>'}<h3 style="margin-top:14px">Closed</h3>${cl.map(row).join('')}</div>
+ <div class="panel"><h2>Report a problem</h2><div style="display:grid;gap:8px"><input id="io" placeholder="Order ID, e.g. ORD-1012"><select id="it"><option>Box not found at staging</option><option>Wrong variant reported</option><option>Stock missing</option><option>Courier problem</option><option>Other</option></select><input id="in" placeholder="What happened?"><button class="btn" onclick="report()">Log issue</button></div><p class="note">Every problem gets an owner list and a status, so nothing is handled only by word of mouth.</p></div></div>`}
+function render(){const T={board:['Board',board],office:['Office',office],warehouse:['Warehouse',wh],dispatch:['Dispatch',disp],issues:['Issues',iss]},cnt={office:O.filter(o=>o.st=='new').length,issues:S.issues.filter(i=>i.open).length,dispatch:O.filter(o=>o.st=='staged'&&cut(o)<now()).length};
+ const ae=document.activeElement&&document.activeElement.tagName;if(ae=='INPUT'&&S.auto)return;
+ document.getElementById('nav').innerHTML=Object.entries(T).map(([k,[n]])=>`<button class="${S.tab==k?'on':''}" onclick="S.tab='${k}';S.sel=null;render()">${n}${cnt[k]?`<i>${cnt[k]}</i>`:''}</button>`).join('');
+ document.getElementById('v').innerHTML=T[S.tab][1]();}
+setInterval(()=>{S.auto=1;if(S.tab=='board'||S.tab=='dispatch')render();S.auto=0},30000);render();
+</script></body></html>
